@@ -5,14 +5,14 @@
   "main": "./lib/index.js",
   "private": true,
   "bin" : {
-    "nginxparse" : "./lib/cli.js"
+    "nginx-parse": "./lib/cli.js"
   }
   "scripts": {
     "test": "./node_modules/.bin/mocha tests"
   },
   "repository": {
     "type": "git",
-    "href": ""
+    "url": "git@github.com:zxqfox/nginx-conf-parser.git"
   },
   "keywords": [
     "nginx",
@@ -31,9 +31,8 @@
   "devDependencies": {
     "mocha":     "*",
     "uglify-js": "*",
-    "jison":     ">=0.2.0",
-    "coffee-script": "*"
+    "jison":     ">=0.2.0"
   },
   "author": "Dalee Digital Agency <dev@dalee.ru>",
-  "license": "MIT"
+  "license": "MIT X"
 }
