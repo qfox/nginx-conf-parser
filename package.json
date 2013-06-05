@@ -6,7 +6,7 @@
   "private": true,
   "bin" : {
     "nginx-parse": "./lib/cli.js"
-  }
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha tests"
   },
