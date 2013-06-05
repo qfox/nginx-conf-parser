@@ -1,0 +1,39 @@
+{
+  "name": "nginx-conf-parser",
+  "version": "0.1.0",
+  "description": "nginx config files parser based on jison",
+  "main": "./lib/index.js",
+  "private": true,
+  "bin" : {
+    "nginxparse" : "./lib/cli.js"
+  }
+  "scripts": {
+    "test": "./node_modules/.bin/mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "href": ""
+  },
+  "keywords": [
+    "nginx",
+    "config",
+    "parser"
+  ],
+  "contributors": [
+    {
+      "name": "Alex Yaroshevich",
+      "email": "alex@qfox.ru"
+    }
+  ],
+  "dependencies": {
+    "glob":      "~3.2"
+  },
+  "devDependencies": {
+    "mocha":     "*",
+    "uglify-js": "*",
+    "jison":     ">=0.2.0",
+    "coffee-script": "*"
+  },
+  "author": "Dalee Digital Agency <dev@dalee.ru>",
+  "license": "MIT"
+}
