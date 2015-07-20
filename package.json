@@ -1,6 +1,6 @@
 {
   "name": "nginx-conf-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "nginx config files parser based on jison",
   "main": "./lib/index.js",
   "private": true,
