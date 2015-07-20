@@ -43,6 +43,8 @@ map(?=\s+)                  return 'map';
 geo(?=\s+)                  return 'geo';
 "location"                  return 'location';
 "server_name"               return 'server_name';
+"least_conn"                return 'least_conn';
+"ip_hash"                   return 'ip_hash';
 js(?=\s*\{)                 return 'js';
 
 (access|error)_log          return 'log';
@@ -83,6 +85,16 @@ ngxInitial
         {return $$;}
     ;
 
+ngxLoadBalancingMethod
+    : 'least_conn' ';'                              -> [$1]
+    | 'ip_hash' ';'                                 -> [$1]
+    ;
+
+ngxUpstreamSchema
+    : ngxLoadBalancingMethod ngxSchema              {$$ = $2, $2.unshift($1);}
+    | ngxSchema
+    ;
+
 ngxSchema
     : ngxSchemaDirective ngxSchema                      {$$ = $2, $2.unshift($1);}
     | ngxSchemaDirective                             -> [$1]
@@ -97,7 +109,7 @@ ngxSchemaDirective
 ngxBlock
     : TAG '{' '}'                                    -> [$1, null]
     | 'http' '{' ngxSchema '}'                       -> [$1, $3]
-    | 'upstream' ngxUpstreamName '{' ngxSchema '}'   -> [$1, $2, $4]
+    | 'upstream' ngxUpstreamName '{' ngxUpstreamSchema '}'   -> [$1, $2, $4]
     | 'server' '{' ngxSchema '}'                     -> [$1, $3]
     | 'location' ngxLocationParams '{' ngxSchema '}' -> [$1, $2, $4]
     | 'types' '{' ngxMimeTypesMap '}'                -> [$1, $3]
